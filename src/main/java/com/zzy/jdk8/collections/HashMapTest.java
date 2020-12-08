@@ -14,6 +14,12 @@ public class HashMapTest {
         for (int i = 0;i<11;i++){
             longStringMap.put((long)i,String.valueOf(i));
         }
+
+        int n =longStringMap.size();
+
+        for (int i = 0;i<n;i++){
+            longStringMap.put((long)i,String.valueOf(i));
+        }
         System.out.println("================end=================");
         LongStream.rangeClosed(1L,30L)
                 .forEach(l->{
