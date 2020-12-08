@@ -152,6 +152,7 @@ public class SingletonTest {
 
         @Override
         public int hashCode() {
+            //hashcode重写学习https://cnblogs.com/yuxiaole/p/9570850.html
             int result = 17;
             result = 31 * result + (this.name == null ? 0 : name.hashCode());
             result = 31 * result + (this.hash);
