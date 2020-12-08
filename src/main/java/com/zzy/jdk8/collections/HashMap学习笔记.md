@@ -30,7 +30,7 @@
 ######int threshold;
 
 ######6.树形阈值：JDK 1.8 新增的，当使用 树 而不是列表来作为桶时使用
-######    binCount >= TREEIFY_THRESHOLD - 1,其实是>=8，从链表转换为红黑树
+######    binCount >= TREEIFY_THRESHOLD - 1,其实是>=7，从链表转换为红黑树
 ######static final int TREEIFY_THRESHOLD = 8;
 
 ######7.非树形阈值：也是 1.8 新增的，扩容时分裂一个树形桶的阈值，要比 TREEIFY_THRESHOLD 小
