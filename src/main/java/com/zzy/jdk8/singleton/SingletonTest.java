@@ -146,16 +146,12 @@ public class SingletonTest {
             if(object == null){
                 return false;//非空性：对于任意非空引用x，x.equals(null)应该返回false。
             }
-
-            if(object instanceof SingletonPo){
-                SingletonPo other = (SingletonPo) object;
-                //需要比较的字段相等，则这两个对象相等
-                if(equalsStr(this.name, other.name)
-                        && this.hash == other.hash){
-                    return true;
-                }
+            if(!(object instanceof SingletonPo)){
+                return false;
             }
-            return false;
+            SingletonPo other = (SingletonPo) object;
+            //需要比较的字段相等，则这两个对象相等
+            return equalsStr(this.name, other.name) && this.hash == other.hash;
         }
 
         @Override
