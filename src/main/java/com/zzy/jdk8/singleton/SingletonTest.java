@@ -23,14 +23,12 @@ public class SingletonTest {
         });
     }
 
-
     @Test
     public void test3() {
         IntStream.rangeClosed(1, 100).parallel().forEach(i -> {
             System.out.println("SingletonC-hashcode：" + SingletonC.getSingletonC().hashCode());
         });
     }
-
 
     @Test
     public void test4() {
@@ -40,14 +38,12 @@ public class SingletonTest {
         });
     }
 
-
     @Test
     public void test5() {
         IntStream.rangeClosed(1, 100).parallel().forEach(i -> {
             System.out.println("SingletonE-hashcode：" + SingletonE.getSingletonE().hashCode());
         });
     }
-
 
     @Test
     public void test6() {
@@ -77,62 +73,62 @@ public class SingletonTest {
         IntStream.rangeClosed(1, 100).parallel().forEach(i -> {
             int hashCode = SingletonA.getSingletonA().hashCode();
             String key = SingletonA.class.getSimpleName();
-            singletonSet.add(new SingletonPo(hashCode,key));
+            singletonSet.add(new SingletonPo(hashCode, key));
         });
         IntStream.rangeClosed(1, 100).parallel().forEach(i -> {
             int hashCode = SingletonB.getSingletonB().hashCode();
             String key = SingletonB.class.getSimpleName();
-            singletonSet.add(new SingletonPo(hashCode,key));
+            singletonSet.add(new SingletonPo(hashCode, key));
         });
         IntStream.rangeClosed(1, 100).parallel().forEach(i -> {
             int hashCode = SingletonC.getSingletonC().hashCode();
             String key = SingletonC.class.getSimpleName();
-            singletonSet.add(new SingletonPo(hashCode,key));
+            singletonSet.add(new SingletonPo(hashCode, key));
         });
         //线程不安全
         IntStream.rangeClosed(1, 100).parallel().forEach(i -> {
             int hashCode = SingletonD.getSingletonD().hashCode();
             String key = SingletonD.class.getSimpleName();
-            singletonSet.add(new SingletonPo(hashCode,key));
+            singletonSet.add(new SingletonPo(hashCode, key));
         });
         IntStream.rangeClosed(1, 100).parallel().forEach(i -> {
             int hashCode = SingletonE.getSingletonE().hashCode();
             String key = SingletonE.class.getSimpleName();
-            singletonSet.add(new SingletonPo(hashCode,key));
+            singletonSet.add(new SingletonPo(hashCode, key));
         });
         //线程不安全
         IntStream.rangeClosed(1, 100).parallel().forEach(i -> {
             int hashCode = SingletonF.getSingletonF().hashCode();
             String key = SingletonF.class.getSimpleName();
-            singletonSet.add(new SingletonPo(hashCode,key));
+            singletonSet.add(new SingletonPo(hashCode, key));
         });
         IntStream.rangeClosed(1, 100).parallel().forEach(i -> {
             int hashCode = SingletonG.getSingletonG().hashCode();
             String key = SingletonG.class.getSimpleName();
-            singletonSet.add(new SingletonPo(hashCode,key));
+            singletonSet.add(new SingletonPo(hashCode, key));
         });
         IntStream.rangeClosed(1, 100).parallel().forEach(i -> {
             int hashCode = EnumSingletonH.getSingletonH().hashCode();
             String key = EnumSingletonH.class.getSimpleName();
-            singletonSet.add(new SingletonPo(hashCode,key));
+            singletonSet.add(new SingletonPo(hashCode, key));
         });
         singletonSet.forEach(System.out::println);
 
-        Map<String,List<SingletonPo>> map = singletonSet.stream().collect(Collectors.groupingBy(SingletonPo::getName));
-        map.forEach((k,v)->{
-            System.out.println(k + "线程"+ (v.size() == 1 ? "" :"不")+"安全");
+        Map<String, List<SingletonPo>> map = singletonSet.stream().collect(Collectors.groupingBy(SingletonPo::getName));
+        map.forEach((k, v) -> {
+            System.out.println(k + "线程" + (v.size() == 1 ? "" : "不") + "安全");
         });
     }
 
-    class SingletonPo{
+    class SingletonPo {
         private int hash;
         private String name;
 
-        private boolean equalsStr(String str1, String str2){
-            if(StringUtils.isBlank(str1) && StringUtils.isBlank(str2)){
+        private boolean equalsStr(String str1, String str2) {
+            if (StringUtils.isBlank(str1) && StringUtils.isBlank(str2)) {
                 return true;
             }
-            if(!StringUtils.isBlank(str1) && str1.equals(str2)){
+            if (!StringUtils.isBlank(str1) && str1.equals(str2)) {
                 return true;
             }
             return false;
@@ -140,13 +136,13 @@ public class SingletonTest {
 
         @Override
         public boolean equals(Object object) {
-            if(this == object){
+            if (this == object) {
                 return true;//地址相等
             }
-            if(object == null){
+            if (object == null) {
                 return false;//非空性：对于任意非空引用x，x.equals(null)应该返回false。
             }
-            if(!(object instanceof SingletonPo)){
+            if (!(object instanceof SingletonPo)) {
                 return false;
             }
             SingletonPo other = (SingletonPo) object;
@@ -164,7 +160,7 @@ public class SingletonTest {
 
         @Override
         public String toString() {
-            return "[name:"+ this.name+",    hash:"+this.hash+",   hashCode:"+hashCode()+"]";
+            return "[name:" + this.name + ",    hash:" + this.hash + ",   hashCode:" + hashCode() + "]";
         }
 
         public SingletonPo(int hashCode, String name) {
