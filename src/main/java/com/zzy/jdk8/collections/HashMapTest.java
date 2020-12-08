@@ -3,7 +3,9 @@ package com.zzy.jdk8.collections;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 public class HashMapTest {
@@ -29,5 +31,18 @@ public class HashMapTest {
         System.out.println(("hashMap的最大容量："+ (1 << 30)));
 
         System.out.println((16 << 1) + "     " + ((int)(0.75 * 16) << 1));
+    }
+
+    @Test
+    public void test2(){
+        Map<String,String> linkedHashMap = new LinkedHashMap<>();
+        IntStream.rangeClosed(1,20).forEach(i->  linkedHashMap.put(String.valueOf(i),String.valueOf(i)) );
+        linkedHashMap.forEach((k,v)-> System.out.println("K:"+k + "   V:"+v));
+    }
+    @Test
+    public void test3(){
+        Map<String,String> hashMap = new HashMap<>();
+        IntStream.rangeClosed(1,20).forEach(i->  hashMap.put(String.valueOf(i),String.valueOf(i)) );
+        hashMap.forEach((k,v)-> System.out.println("K:"+k + "   V:"+v));
     }
 }

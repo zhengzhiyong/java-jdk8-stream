@@ -3,6 +3,7 @@ package com.zzy.jdk8.collections;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -32,5 +33,18 @@ public class ListTest {
             i = j;
             System.out.println("第"+k+"次调用add方法的时候会初始化list的大小为:"+i);
         }
+    }
+
+    @Test
+    public void test2(){
+        List<String> stringList = new LinkedList<>();
+        IntStream.rangeClosed(0,12).forEach(i-> {
+            stringList.add("str"+i);
+        });
+
+        stringList.forEach(str->{
+            System.out.println(str);
+        });
+
     }
 }
