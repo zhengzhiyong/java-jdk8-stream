@@ -13,10 +13,12 @@ public class HashMapTest {
     public void test1(){
         System.out.println("================start=================");
         Map<Long,String> longStringMap = new HashMap<>();
+        int hashCode1 = longStringMap.hashCode();
         for (int i = 0;i<11;i++){
             longStringMap.put((long)i,String.valueOf(i));
         }
-
+        int hashCode2 = longStringMap.hashCode();
+        System.out.println(hashCode1 == hashCode2);
         int n =longStringMap.size();
 
         for (int i = 0;i<n;i++){
