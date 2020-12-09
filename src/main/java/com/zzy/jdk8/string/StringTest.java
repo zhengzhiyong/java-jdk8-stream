@@ -9,6 +9,9 @@ public class StringTest {
         String str = "i";
         String str1 = new String("i");
         System.out.println(str == str1);
+        System.out.println(str1.hashCode());
+        str1 = str1 + "---";
+        System.out.println(str1.hashCode());
 
         //线程安全的
         StringBuffer stringBuffer = new StringBuffer();
